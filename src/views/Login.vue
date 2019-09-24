@@ -41,7 +41,7 @@
     methods: {
       loginSubmit(ev) {
         var _this = this;
-         var loginParams = { name: this.formLogin.account, password: this.formLogin.checkPass };
+         var user = { name: this.formLogin.account, password: this.formLogin.checkPass };
             // requestLogin(loginParams).then(data => {
             //   if(data.status==200){
             //     //否则就跳到默认的首页
@@ -51,10 +51,8 @@
             //   }
             //   console.log(data);
             // });
-            localStorage.userinfo={name: this.formLogin.account, password: this.formLogin.checkPass };
-             this.$router.push({
-                   name: 'Index'
-               })
+           sessionStorage.setItem('user', JSON.stringify(user));
+           this.$router.push({ path: 'Index' });
       }
     }
   }
@@ -78,4 +76,7 @@
     color: #797974;
 }
 .login-container .login-btn{width:100%;background-color: #173B8C !important;border-color: rgb(4, 46, 143);}
+
+
 </style>
+ 
